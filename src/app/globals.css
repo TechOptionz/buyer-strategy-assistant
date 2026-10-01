@@ -1,0 +1,119 @@
+@import "tailwindcss";
+
+/*
+ * Design system v1 — "A quiet professional ledger" (design/Design System.dc.html).
+ * Neutral greys, one accent for interaction, and status hues that only carry meaning.
+ * Every status pairs colour with an icon and a word. Numbers are the loudest element.
+ */
+@theme {
+  /* Neutrals */
+  --color-app: #f6f7f8; /* surface-app: app background */
+  --color-surface: #ffffff; /* content, tables, panels */
+  --color-subtle: #fbfbfc; /* sidebar, table header, affixes */
+  --color-hover: #f2f4f6; /* row and item hover */
+  --color-line: #e3e5e8; /* 1px hairlines, panel borders */
+  --color-line-soft: #eef0f2; /* row dividers */
+  --color-line-strong: #cdd1d6; /* input and button borders */
+  --color-ink: #15181c; /* primary text, figures */
+  --color-ink-2: #2a2f35; /* body text on white */
+  --color-ink-secondary: #4a5058; /* labels, secondary text */
+  --color-muted: #6b727b; /* source labels, metadata */
+  --color-faint: #8a9098; /* placeholders, disabled text */
+  --color-disabled: #f0f1f3;
+
+  /* Accent */
+  --color-accent: #1e4fa8;
+  --color-accent-hover: #173f87;
+  --color-accent-tint: #eaf0fb;
+  --color-accent-wash: #f3f6fc; /* selected row */
+  --color-accent-line: #c9d6ef;
+  --color-accent-ink: #ffffff;
+
+  /* Status roles — text · tint · border */
+  --color-ok: #1b6b3a;
+  --color-ok-tint: #e8f3ec;
+  --color-ok-line: #b9dbc5;
+  --color-warn: #8a5a00;
+  --color-warn-tint: #fcf3e0;
+  --color-warn-line: #f0d9a8;
+  --color-warn-ink: #5a3b00;
+  --color-warn-wash: #fffbf2;
+  --color-bad: #b42318;
+  --color-bad-tint: #fcebea;
+  --color-bad-line: #f2c4c0;
+  --color-bad-ink: #5c1a14;
+  --color-est: #4d5d73;
+  --color-est-tint: #edf1f6;
+  --color-est-line: #cbd4e0;
+  --color-est-wash: #f7f9fb;
+  --color-neutral: #3f454d;
+  --color-neutral-tint: #f0f1f3;
+  --color-neutral-line: #dadde1;
+
+  --font-sans: var(--font-plex-sans), system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  --shadow-overlay: 0 8px 24px rgba(21, 24, 28, 0.12);
+  --shadow-panel: -12px 0 32px rgba(21, 24, 28, 0.1);
+  --shadow-page: 0 1px 3px rgba(21, 24, 28, 0.12);
+}
+
+html {
+  color-scheme: light;
+}
+
+body {
+  background: var(--color-app);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-variant-numeric: tabular-nums;
+  -webkit-font-smoothing: antialiased;
+}
+
+button,
+input,
+textarea,
+select {
+  font-family: inherit;
+}
+
+a {
+  color: var(--color-accent);
+}
+a:hover {
+  color: var(--color-accent-hover);
+}
+
+/* 2px accent — focus only. */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.num {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Highlight a value that just changed in the live summary (CON06) without moving focus. */
+@keyframes changed {
+  from {
+    background-color: var(--color-accent-tint);
+  }
+  to {
+    background-color: transparent;
+  }
+}
+.just-changed {
+  animation: changed 2.4s ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .just-changed {
+    animation: none;
+    outline: 1px dashed var(--color-accent);
+  }
+}
+
+dialog::backdrop {
+  background: rgba(21, 24, 28, 0.32);
+}

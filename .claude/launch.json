@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "buyer-strategy-assistant",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"],
+      "port": 3000
+    },
+    {
+      "name": "design-mocks",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "4100", "--directory", "design"],
+      "port": 4100
+    }
+  ]
+}
